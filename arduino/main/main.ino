@@ -132,10 +132,14 @@ servo.attach( NUMBER_PIN );
 
 pinMode( 13, OUTPUT );
 digitalWrite( 13, HIGH );
+
+Serial.begin( 9600 );
 }
 
 void loop()
 {
+  Serial.write( "test" );
+  delay( 50000 );
   unsigned char arr_byte[ 10 ];
   arr_byte[ 0 ] = 32;
   arr_byte[ 1 ] = 15;
@@ -146,17 +150,6 @@ void loop()
   
   Pen my_pen;
 
-  /*my_pen.write_0();
-  my_pen.write_0();
-  my_pen.write_0();
-  my_pen.write_1();
-  my_pen.write_1();
-  my_pen.write_1();
-  my_pen.write_1();
-  my_pen.write_1();
-  my_pen.write_0();
-  delay(50000);
-  */
   my_pen.write_array( arr_byte, 5 );
 
 /*
@@ -167,48 +160,8 @@ void loop()
   my_pen.write_byte( 16 );
 */
 digitalWrite( 13, LOW );
-/*
-  my_pen.write_0();
-  my_pen.write_1();
-  my_pen.write_0();
-  my_pen.write_1();
-  my_pen.write_0();
-  my_pen.write_1();
-  my_pen.write_0();*/
 
   delay( 50000 );
   
-  /*
-  LEFT_R( DEF_SPEED ); // write 1
-  delay( 50 );
-  RIGHT_R( DEF_SPEED ); //write 0
-  delay( 50 );
-  STOP();
-  delay( 50 );
-  LEFT_R( DEF_SPEED );
-  delay( 50 );
-  STOP();
-  delay( 50 );
-  */
-  /*
-  servo.write( 180 ); // write 1
-  delay( 50 );
-  servo.write( 0 ); // write 0
-  delay( 50 );
-  servo.write( 90 ); // 0
-  delay( 50 );
-  servo.write( 180 ); //1
-  delay( 50 );
-  servo.write( 90 );
-  delay( 50 );
-  */
-
-
-    delay( 2000 );
   
-//servo.write(100); //ставим вал под 0
-
-//delay(50000); //ждем 2 секунды
-//servo.write(170); //ставим вал под 180
-//delay(2000); //ждем 2 секунды
 }
