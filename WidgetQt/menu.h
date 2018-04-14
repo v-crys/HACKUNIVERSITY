@@ -27,7 +27,11 @@ private slots:
 private:
     Ui::Menu *ui;
     SettingPort *WindowSettingPort;
+    QSerialPort *serial;
 
+    void Connect();
+    void handleError(QSerialPort::SerialPortError error);
+    void closeSerialPort();
 };
 
 #endif // MENU_H

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QtSerialPort/QSerialPort>
+#include <QMessageBox>
 
 namespace Ui {
 class SettingPort;

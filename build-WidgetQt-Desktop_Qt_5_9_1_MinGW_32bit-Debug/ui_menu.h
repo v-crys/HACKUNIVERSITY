@@ -14,9 +14,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -27,8 +26,7 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
-    QTextEdit *textEdit;
-    QLabel *label;
+    QLineEdit *lineEdit;
 
     void setupUi(QWidget *Menu)
     {
@@ -37,19 +35,16 @@ public:
         Menu->resize(667, 357);
         pushButton = new QPushButton(Menu);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(20, 10, 120, 28));
+        pushButton->setGeometry(QRect(10, 40, 120, 28));
         pushButton_2 = new QPushButton(Menu);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(160, 10, 120, 28));
+        pushButton_2->setGeometry(QRect(10, 10, 120, 28));
         pushButton_3 = new QPushButton(Menu);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(560, 310, 93, 28));
-        textEdit = new QTextEdit(Menu);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(40, 80, 461, 141));
-        label = new QLabel(Menu);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(330, 10, 111, 51));
+        lineEdit = new QLineEdit(Menu);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(10, 70, 401, 151));
 
         retranslateUi(Menu);
 
@@ -59,10 +54,9 @@ public:
     void retranslateUi(QWidget *Menu)
     {
         Menu->setWindowTitle(QApplication::translate("Menu", "Form", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("Menu", "PushButton", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("Menu", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214 \320\277\320\276\321\200\321\202", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("Menu", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260 \320\277\320\276\321\200\321\202\320\260", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("Menu", "\320\236\321\202\320\277\321\200\320\260\320\262\320\270\321\202\321\214", Q_NULLPTR));
-        label->setText(QString());
     } // retranslateUi
 
 };

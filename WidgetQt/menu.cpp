@@ -10,9 +10,8 @@ Menu::Menu(QWidget *parent) :
     //connect(WindowSettingPort, &SettingPort::menu, this, &Menu::show);
 
 
-    //connect(serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error),
-     //       this, &Menu::handleError);
-    //connect(serial, &QSerialPort::readyRead, this, &MainWindow::readData);
+    serial = new QSerialPort(this);
+    Connect();
 }
 
 Menu::~Menu()
@@ -22,7 +21,7 @@ Menu::~Menu()
 
 void Menu::on_pushButton_clicked()
 {
-
+    Connect();
 }
 
 void Menu::on_pushButton_2_clicked()
@@ -34,5 +33,38 @@ void Menu::on_pushButton_2_clicked()
 void Menu::on_pushButton_3_clicked()
 {
 
+    QByteArray test = "";
 
+    test.append(ui->lineEdit->text());
+
+    serial->write( test );
+}
+
+void Menu::handleError(QSerialPort::SerialPortError error)
+{
+    if (error == QSerialPort::ResourceError) {
+        QMessageBox::critical(this, tr("Critical Error"), serial->errorString());
+        closeSerialPort();
+    }
+}
+
+void Menu::closeSerialPort()
+{
+    if (serial->isOpen())
+        serial->close();
+}
+
+void Menu::Connect(){
+    closeSerialPort();
+
+    serial->setPortName(WindowSettingPort->NameReturn());
+    serial->setBaudRate(serial->Baud9600);
+    serial->setDataBits( serial->Data8 );
+    serial->setParity(serial->NoParity);
+    serial->setStopBits(serial->OneStop);
+    serial->setFlowControl( serial->NoFlowControl);
+
+    if (serial->open(QIODevice::ReadWrite)) {
+
+    }
 }

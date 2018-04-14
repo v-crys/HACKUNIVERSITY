@@ -5,10 +5,9 @@ SettingPort::SettingPort(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SettingPort)
 {
-   // ui->setupUi(this);
-   // baudRate = 9600;
-   // dataBits = 8;
-   // stopBits = serial.
+    ui->setupUi(this);
+
+    name = "COM4";
 }
 
 SettingPort::~SettingPort()
