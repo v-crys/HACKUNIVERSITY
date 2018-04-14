@@ -107,7 +107,7 @@ void Pen::write_byte( unsigned char b )
 {
     int i;
 
-    for ( i = 0; i < 8; i++ )
+    for ( i = 7; i >=0; i-- )
       write_bit( testbit( b, i ) );
 }
 
