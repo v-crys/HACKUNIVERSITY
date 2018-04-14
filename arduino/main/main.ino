@@ -32,6 +32,8 @@ class Pen
         void write_bit( unsigned char b );
         void write_byte( unsigned char b );
 
+        void write_array( unsigned char *p, int len );
+
     private:
         int position;   ///< Сдвиг относительно начального положения
         int flag_enabled; ///< Флаг последнего символа (по умолчанию спрятан - 0)
@@ -112,6 +114,18 @@ void Pen::write_byte( unsigned char b )
 }
 
 
+void Pen::write_array( unsigned char *p, int len )
+{
+    int i;
+
+    for ( i = 0; i < len; i++ )
+        write_byte( p[ i ] );
+}
+
+
+
+///////////////////////////////////// MAIN
+
 void setup() 
 {
 servo.attach( NUMBER_PIN ); 
@@ -122,6 +136,14 @@ digitalWrite( 13, HIGH );
 
 void loop()
 {
+  unsigned char arr_byte[ 10 ];
+  arr_byte[ 0 ] = 32;
+  arr_byte[ 1 ] = 15;
+  arr_byte[ 2 ] = 0;
+  arr_byte[ 3 ] = 95;
+  arr_byte[ 4 ] = 16;
+  arr_byte[ 5 ] = 255;
+  
   Pen my_pen;
 
   /*my_pen.write_0();
@@ -135,15 +157,15 @@ void loop()
   my_pen.write_0();
   delay(50000);
   */
+  my_pen.write_array( arr_byte, 5 );
 
-
-
+/*
   my_pen.write_byte( 32 );
   my_pen.write_byte( 15 );
   my_pen.write_byte( 0 );
   my_pen.write_byte( 95 );
   my_pen.write_byte( 16 );
-
+*/
 digitalWrite( 13, LOW );
 /*
   my_pen.write_0();
