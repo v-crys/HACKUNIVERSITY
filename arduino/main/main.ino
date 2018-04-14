@@ -2,12 +2,79 @@
 
 #define LEFT_R( speed )   servo.write( 90 + (speed) );
 #define RIGHT_R( speed )  servo.write( 90 - (speed) );
-#define STOP()              servo.write( 90 );
+#define STOP()            servo.write( 90 );
 
 Servo servo; 
 
 #define DEF_SPEED   20
 #define NUMBER_PIN  10
+
+#define FLAG_DIRECTION  0 ///<  Флаг направления движения (в какую сторону спрятан\вытащен)
+
+
+
+
+class Pen
+{
+    public:
+        Pen() : position( 0 ), flag_enabled( 0 ) {};
+    
+        void write_0();
+        void write_1();
+        
+        void write_bit( unsigned char b );
+        void write_byte( unsigned char b );
+
+    private:
+        int position;   ///< Сдвиг относительно начального положения
+        int flag_enabled; ///< Флаг последнего символа (по умолчанию спрятан - 0)
+  
+};
+
+void Pen::write_0()
+{
+    if ( !flag_enabled )
+      return;
+
+    flag_enabled = !flag_enabled;
+
+    if ( FLAG_DIRECTION )
+        LEFT_R( DEF_SPEED );
+    else
+        RIGHT_R( DEF_SPEED );
+}
+
+void Pen::write_1()
+{
+    if ( !flag_enabled )
+      return;
+
+    flag_enabled = !flag_enabled;
+
+    if ( FLAG_DIRECTION )
+        RIGHT_R( DEF_SPEED );
+    else
+        LEFT_R( DEF_SPEED );
+}
+
+void write_bit( unsigned char b )
+{
+    if ( b )
+      write_1();
+    else 
+      write_0();
+}
+
+void Pen::write_byte( unsigned char b )
+{
+    int i;
+
+    for ( i = 0; i < 8; i++ )
+    {
+        
+    }
+}
+
 
 void setup() 
 {
