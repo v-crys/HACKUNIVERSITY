@@ -7,7 +7,7 @@ SettingPort::SettingPort(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    name = "COM4";
+    name = "COM5";
 }
 
 SettingPort::~SettingPort()

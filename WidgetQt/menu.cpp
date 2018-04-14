@@ -34,8 +34,13 @@ void Menu::on_pushButton_3_clicked()
 {
 
     QByteArray test = "";
+    QString temp(ui->lineEdit->text());
 
-    test.append(ui->lineEdit->text());
+    test.append("d");
+    test.append(temp.length());
+    test.append(temp);
+
+    //test.append(ui->lineEdit->text());
 
     serial->write( test );
 }
