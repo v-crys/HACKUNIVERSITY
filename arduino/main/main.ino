@@ -123,6 +123,14 @@ void Pen::write_array( unsigned char *p, int len )
 }
 
 
+unsigned char readByteCom()
+{
+  while( 1 )
+  {
+    if ( Serial.available() > 0 )
+        return Serial.read();
+  }
+}
 
 ///////////////////////////////////// MAIN
 
@@ -131,15 +139,46 @@ void setup()
 servo.attach( NUMBER_PIN ); 
 
 pinMode( 13, OUTPUT );
-digitalWrite( 13, HIGH );
 
 Serial.begin( 9600 );
 }
 
+  unsigned char input_arr[ 255 ];
+  int arr_i = 0;
+  unsigned char len_arr = 0;
+
 void loop()
 {
-  Serial.write( "test" );
-  delay( 50000 );
+  int i;
+
+  Pen my_pen;
+
+  digitalWrite( 13, HIGH ); ///< Светодиод горит - ожидаем приема данных
+  
+  while (1)
+  {
+      if ( readByteCom() == 'd' ) ///< 'd' is start byte
+        break;
+  }
+
+  len_arr = readByteCom();
+
+  arr_i = 0;
+  for ( i = 0; i < len_arr; i++ )
+      input_arr[ i ] = readByteCom();
+
+  digitalWrite( 13, LOW ); ///< Светодиод гаснет (через 3 секунды начнет писать)
+
+  delay( 3000 );
+  my_pen.write_array( input_arr, len_arr );
+
+  
+
+  
+  
+  //Serial.write( "test" );
+  //delay( 50000 );
+  /*
   unsigned char arr_byte[ 10 ];
   arr_byte[ 0 ] = 32;
   arr_byte[ 1 ] = 15;
@@ -159,9 +198,9 @@ void loop()
   my_pen.write_byte( 95 );
   my_pen.write_byte( 16 );
 */
-digitalWrite( 13, LOW );
+//digitalWrite( 13, LOW );
 
-  delay( 50000 );
+  //delay( 50000 );
   
   
 }
