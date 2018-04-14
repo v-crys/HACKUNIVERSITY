@@ -237,6 +237,7 @@ Makefile: ../WidgetQt/WidgetQt.pro ../../../../QT/5.9.1/mingw53_32/mkspecs/win32
 		../../../../QT/5.9.1/mingw53_32/lib/qtmaind.prl \
 		../../../../QT/5.9.1/mingw53_32/lib/Qt5Widgets.prl \
 		../../../../QT/5.9.1/mingw53_32/lib/Qt5Gui.prl \
+		../../../../QT/5.9.1/mingw53_32/lib/Qt5SerialPort.prl \
 		../../../../QT/5.9.1/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile ..\WidgetQt\WidgetQt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../../../QT/5.9.1/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -415,6 +416,7 @@ Makefile: ../WidgetQt/WidgetQt.pro ../../../../QT/5.9.1/mingw53_32/mkspecs/win32
 ../../../../QT/5.9.1/mingw53_32/lib/qtmaind.prl:
 ../../../../QT/5.9.1/mingw53_32/lib/Qt5Widgets.prl:
 ../../../../QT/5.9.1/mingw53_32/lib/Qt5Gui.prl:
+../../../../QT/5.9.1/mingw53_32/lib/Qt5SerialPort.prl:
 ../../../../QT/5.9.1/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\WidgetQt\WidgetQt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

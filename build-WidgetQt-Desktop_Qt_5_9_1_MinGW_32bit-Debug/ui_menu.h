@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
@@ -27,6 +28,7 @@ public:
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
     QTextEdit *textEdit;
+    QLabel *label;
 
     void setupUi(QWidget *Menu)
     {
@@ -45,6 +47,9 @@ public:
         textEdit = new QTextEdit(Menu);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         textEdit->setGeometry(QRect(40, 80, 461, 141));
+        label = new QLabel(Menu);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(330, 10, 111, 51));
 
         retranslateUi(Menu);
 
@@ -57,6 +62,7 @@ public:
         pushButton->setText(QApplication::translate("Menu", "PushButton", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("Menu", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260 \320\277\320\276\321\200\321\202\320\260", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("Menu", "\320\236\321\202\320\277\321\200\320\260\320\262\320\270\321\202\321\214", Q_NULLPTR));
+        label->setText(QString());
     } // retranslateUi
 
 };

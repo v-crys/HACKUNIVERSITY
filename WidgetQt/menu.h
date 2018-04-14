@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <settingport.h>
+#include <QtSerialPort/QSerialPort>
 
 namespace Ui {
 class Menu;
@@ -21,9 +22,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::Menu *ui;
     SettingPort *WindowSettingPort;
+
 };
 
 #endif // MENU_H

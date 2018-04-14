@@ -6,7 +6,7 @@
 #include <QMainWindow>
 
 #include <QtSerialPort/QSerialPort>
-#include <menu.h>
+
 
 namespace Ui {
 class MainWindow;
@@ -26,8 +26,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    QSerialPort *serial;
-    Menu *sWindow;
+       QSerialPort *serial;
+       void handleError(QSerialPort::SerialPortError error);
+       void closeSerialPort();
+   // Menu *sWindow;
     //SettingsDialog *settings;
 };
 
